@@ -278,3 +278,153 @@ From inside the respective folder:
   back in to mint a new one.
 
 Happy testing!
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+# Bidshop Test Project
+
+## Overview
+
+This repository contains a simple test setup for the Bidshop application, covering both API and UI testing.
+
+The goal was to keep the test suite small and focused, targeting the most important user flows instead of trying to cover every endpoint.
+
+---
+
+## Tools Used
+
+### API Tests
+
+* Jest
+* Supertest
+
+I chose this combination because it integrates well with Express and allows testing the API directly without needing to run a separate server.
+
+---
+
+### UI Tests
+
+* Playwright
+
+Playwright was used for basic end-to-end testing as it provides reliable browser automation and is straightforward to set up.
+
+---
+
+## Test Coverage
+
+### API
+
+The API tests focus on key functionality:
+
+- **User registration**
+  - should register a new user
+
+- **Authentication**
+  - should login successfully
+  - should fail with wrong password
+
+- **Basic order flow**
+  - should add item to cart and place order successfully
+  - should reject request without authentication
+  - should reject request when cart is empty
+
+These represent the core backend behaviour.
+
+---
+
+### UI
+
+The UI tests cover:
+
+- Loading the homepage
+- Verifying that products are visible
+- Basic interaction with product elements (e.g. buttons)
+- E2R test: Register → Login → Add to cart → Checkout → Place order successfully
+
+The tests are intentionally simple to keep them stable and easy to maintain.
+
+---
+
+## Running the Tests
+
+### Install dependencies
+
+```bash
+cd backend
+npm install --save-dev jest supertest @types/jest @types/supertest ts-jest
+cd ../frontend 
+npm install --save-dev @playwright/test
+npx playwright install
+```
+
+---
+
+### Run API tests
+
+```bash
+cd backend
+npm test
+```
+
+---
+
+### Run UI tests
+
+Start the frontend first:
+
+```bash
+cd frontend
+npm run dev
+```
+
+Then in another terminal:
+
+```bash
+npx playwright test
+```
+or debug visually
+
+```bash
+npx playwright test --ui
+```
+
+---
+
+## Branches
+
+The work is organised into separate branches:
+
+* **main**  
+  Contains the original project setup
+
+* **test/api-tests**  
+  Contains API test setup using Jest and Supertest (auth.test.ts and order.test.ts)
+
+* **test/ui-tests**  
+  Contains UI and end-to-end tests using Playwright (e2e.spec.ts, ui.spec.ts, DISCOUNT.md and readme update)
+
+---
+
+To switch between branches:
+
+```bash
+git checkout test/api-tests
+git checkout test/ui-tests
+
+---
+## Notes
+
+* The test suite focuses on a small number of meaningful tests rather than full coverage.
+* Tests are written to be easy to understand and modify
+* UI tests are kept minimal to avoid flakiness.
+
+---
+
+## If I had more time
+
+* Improve selectors using consistent test IDs
+* Introduce better test data handling
+* Expand negative test scenarios
+
+---
+
