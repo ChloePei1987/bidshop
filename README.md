@@ -339,7 +339,7 @@ The UI tests cover:
 - Loading the homepage
 - Verifying that products are visible
 - Basic interaction with product elements (e.g. buttons)
-- E2R test: Register → Login → Add to cart → Checkout → Place order successfully
+- E2E test: Register → Login → Add to cart → Checkout → Place order successfully
 
 The tests are intentionally simple to keep them stable and easy to maintain.
 
@@ -410,8 +410,9 @@ To switch between branches:
 ```bash
 git checkout test/api-tests
 git checkout test/ui-tests
-
+```
 ---
+
 ## Notes
 
 * The test suite focuses on a small number of meaningful tests rather than full coverage.
