@@ -426,6 +426,8 @@ git checkout test/ui-tests
 * Improve selectors using consistent test IDs
 * Introduce better test data handling
 * Expand negative test scenarios
-
+* Extract reusable helper methods for common actions (e.g. login, add to cart)
+* Organise them in a shared folder (e.g. `tests/utils` or `tests/helpers`)
+* Add comments to improve readability and maintainability
 ---
 
